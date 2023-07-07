@@ -1,0 +1,17 @@
+const express = require('express')
+const morgan = require ('morgan')
+const cors = require('cors')
+
+const musicRoutes = require('./routes/music_routes')
+const userRoutes = require('./routes/user_routes')
+const favsRoutes = require('./routes/favs_routes') 
+const app = express()
+
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(musicRoutes)
+app.use(userRoutes)
+app.use(favsRoutes)
+app.listen(3000)
+console.log("server corriendo en el puerto 3000")
